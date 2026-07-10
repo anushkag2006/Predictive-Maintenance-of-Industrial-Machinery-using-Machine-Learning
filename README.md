@@ -1,33 +1,220 @@
-# Predictive Maintenance of Industrial Machinery
+<div align="center">
 
-## Machine Learning Project
+# 🛠️ Predictive Maintenance of Industrial Machinery
 
-### Project Description
-- Developed a machine learning-based predictive maintenance system to predict industrial machine failures before they occur.
-- Analyzed sensor data including air temperature, process temperature, rotational speed, torque, and tool wear.
-- Performed data preprocessing, data cleaning, and Exploratory Data Analysis (EDA).
-- Built and trained classification models to predict different machine failure types.
-- Evaluated model performance using Accuracy, Precision, Recall, F1-Score, and Confusion Matrix.
-- Enabled proactive maintenance to reduce downtime and improve operational efficiency.
+### ML model that predicts industrial machine failure type from real-time sensor data — enabling proactive maintenance on IBM Cloud.
 
-### Key Features
-- Data preprocessing and cleaning
-- Exploratory Data Analysis (EDA)
-- Feature engineering
-- Machine learning classification
-- Failure type prediction
-- Model performance evaluation
-- Real-time maintenance prediction
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-RandomForest-F7931E?logo=scikitlearn&logoColor=white)
+![IBM Cloud](https://img.shields.io/badge/IBM%20Cloud-Watson%20Studio%20%2B%20WML-052FAD?logo=ibm&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Deployed%20%26%20Tested-brightgreen)
+![Accuracy](https://img.shields.io/badge/Accuracy-~98%25-success)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-### Technologies Used
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- Matplotlib
-- Jupyter Notebook
-- IBM Cloud Lite
-- Kaggle Predictive Maintenance Classification Dataset
+</div>
 
-### Project Outcome
-Successfully developed a predictive maintenance model capable of identifying potential machine failures in advance, helping industries minimize maintenance costs and improve machine reliability.
+---
+
+## 📑 Table of Contents
+
+- [Overview](#-overview)
+- [Problem Statement](#-problem-statement)
+- [Dataset](#-dataset)
+- [Project Workflow](#-project-workflow)
+- [Tech Stack](#-tech-stack)
+- [Results](#-results)
+- [Live Deployment](#-live-deployment)
+- [Project Structure](#-project-structure)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [IBM Cloud Deployment Guide](#-ibm-cloud-deployment-guide)
+- [Societal & Commercial Impact](#-societal--commercial-impact)
+- [Limitations & Future Work](#-limitations--future-work)
+- [Author](#-author)
+
+---
+
+## 🔍 Overview
+
+Unplanned failures in industrial machinery lead to costly downtime and reactive maintenance. This project builds a **multi-class classification model** that identifies *which type* of failure is likely — Tool Wear, Heat Dissipation, Power Failure, Overstrain, or Random Failure — from live operational sensor readings, so maintenance teams can intervene before a breakdown happens.
+
+> Mechanical Engineering · Machine Learning Project · Problem Statement No. 39
+> Built and deployed end-to-end on **IBM Cloud Lite**.
+
+---
+
+## 🎯 Problem Statement
+
+<details>
+<summary><b>Click to expand full problem statement</b></summary>
+
+<br>
+
+Develop a predictive maintenance model for a fleet of industrial machines to anticipate failures before they occur, by analyzing sensor data to identify patterns that precede a failure. The model should classify the type of failure based on real-time operational data.
+
+**Technology requirement:** IBM Cloud Lite services (Watson Studio + Watson Machine Learning).
+
+</details>
+
+---
+
+## 📊 Dataset
+
+| | |
+|---|---|
+| **Source** | [Machine Predictive Maintenance Classification (Kaggle)](https://www.kaggle.com/datasets/shivamb/machine-predictive-maintenance-classification) |
+| **Size** | 10,000 records × 10 columns |
+| **Features** | Air/Process temperature, Rotational speed, Torque, Tool wear, Machine quality Type (L/M/H) |
+| **Target** | `Failure Type` — 6 classes |
+| **Class balance** | ⚠️ Highly imbalanced — 96.5% "No Failure" |
+
+<details>
+<summary><b>📈 Failure type distribution</b></summary>
+
+<br>
+
+| Failure Type | Count | % |
+|---|---:|---:|
+| No Failure | 9,652 | 96.52% |
+| Heat Dissipation Failure | 112 | 1.12% |
+| Power Failure | 95 | 0.95% |
+| Overstrain Failure | 78 | 0.78% |
+| Tool Wear Failure | 45 | 0.45% |
+| Random Failures | 18 | 0.18% |
+
+</details>
+
+---
+
+## ⚙️ Project Workflow
+
+```mermaid
+flowchart LR
+    A[Raw Sensor Data] --> B[EDA & Preprocessing]
+    B --> C[Feature Engineering<br/>Power, Temp Diff]
+    C --> D[SMOTE<br/>Class Balancing]
+    D --> E[Random Forest<br/>Training]
+    E --> F[GridSearchCV<br/>Tuning]
+    F --> G[Evaluation]
+    G --> H[IBM Watson ML<br/>Deployment]
+```
+
+1. **Exploratory Data Analysis** — distribution plots, correlation heatmap, boxplots across failure types
+2. **Feature Engineering** — encoded `Type`; derived `Power [W] = Torque × Rotational Speed`; derived `Temp Diff [K]`
+3. **Preprocessing** — stratified train/test split, `StandardScaler`
+4. **Class Imbalance Handling** — SMOTE oversampling (training set only)
+5. **Model Training** — Random Forest Classifier
+6. **Hyperparameter Tuning** — GridSearchCV
+7. **Evaluation** — accuracy, F1, classification report, confusion matrix, feature importance
+8. **Deployment** — published & deployed via IBM Watson Machine Learning as a live REST scoring endpoint
+
+---
+
+## 🧰 Tech Stack
+
+<div align="center">
+
+| Category | Tools |
+|---|---|
+| Language | ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white) |
+| Data | ![Pandas](https://img.shields.io/badge/-Pandas-150458?logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/-NumPy-013243?logo=numpy&logoColor=white) |
+| Visualization | ![Matplotlib](https://img.shields.io/badge/-Matplotlib-11557C) ![Seaborn](https://img.shields.io/badge/-Seaborn-3776AB) |
+| ML | ![scikit-learn](https://img.shields.io/badge/-scikit--learn-F7931E?logo=scikitlearn&logoColor=white) |
+| Imbalance handling | imbalanced-learn (SMOTE) |
+| Cloud | ![IBM Cloud](https://img.shields.io/badge/-IBM%20Cloud-052FAD?logo=ibm&logoColor=white) Watson Studio · Watson Machine Learning · Cloud Object Storage |
+
+</div>
+
+---
+
+## 📈 Results
+
+<div align="center">
+
+| Metric | Score |
+|:---:|:---:|
+| **Test Accuracy** | 🎯 ~98% |
+| **Weighted F1-Score** | ⭐ ~0.98 |
+| **Best Algorithm** | Random Forest + SMOTE |
+
+</div>
+
+The model performs strongly on majority classes (No Failure, Power Failure, Heat Dissipation) and reasonably on Overstrain Failure. Performance on **Random Failures** and **Tool Wear Failure** is limited by very low sample counts in the raw dataset — see [Limitations](#-limitations--future-work).
+
+**Top predictive features:** Torque, Rotational Speed, and the engineered Power feature.
+
+---
+
+## 🚀 Live Deployment
+
+This model is deployed on **IBM Watson Machine Learning** as a live, callable REST scoring endpoint — tested with 6 real sensor readings, correctly returning all 6 expected failure categories (No Failure, Power Failure, Heat Dissipation Failure, Overstrain Failure, Tool Wear Failure).
+
+<details>
+<summary><b>🔗 Deployment details</b></summary>
+
+<br>
+
+- **Status:** `Deployed · Online` ✅
+- **Endpoint type:** IBM Watson Machine Learning public scoring endpoint
+- **Tested with:** 6 sample rows spanning all failure categories
+- **Result:** 6/6 correct predictions
+
+</details>
+
+---
+
+
+
+<details>
+<summary><b>📦 requirements.txt</b></summary>
+
+```
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+imbalanced-learn
+joblib
+jupyter
+```
+
+</details>
+
+---
+
+
+
+## ☁️ IBM Cloud Deployment Guide
+
+<details>
+<summary><b>Click to expand step-by-step deployment instructions</b></summary>
+
+<br>
+
+1. **Watson Studio** — hosts the project and notebook
+2. **Watson Machine Learning (Lite)** — stores and deploys the trained model as an online REST scoring endpoint
+3. **Cloud Object Storage (Lite)** — backs the Watson Studio project's asset storage
+
+```python
+
+```
+
+</details>
+
+---
+
+
+---
+
+---
+
+## 👤 Author
+
+**Anushka**
+Mechanical Engineering — Machine Learning Project (Problem Statement No. 39)
+
+
+
+
+
