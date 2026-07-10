@@ -112,53 +112,6 @@ The model performs strongly on majority classes (No Failure, Power Failure, Heat
 
 **Top predictive features:** Torque, Rotational Speed, and the engineered Power feature.
 
----
-
-## 🚀 Live Deployment
-
-This model is deployed on **IBM Watson Machine Learning** as a live, callable REST scoring endpoint — tested with 6 real sensor readings, correctly returning all 6 expected failure categories (No Failure, Power Failure, Heat Dissipation Failure, Overstrain Failure, Tool Wear Failure).
-
-<details>
-<summary><b>🔗 Deployment details</b></summary>
-
-<br>
-
-- **Status:** `Deployed · Online` ✅
-- **Endpoint type:** IBM Watson Machine Learning public scoring endpoint
-- **Tested with:** 6 sample rows spanning all failure categories
-- **Result:** 6/6 correct predictions
-
-</details>
-
----
-
-
-
-<details>
-<summary><b>📦 requirements.txt</b></summary>
-
-```
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-imbalanced-learn
-joblib
-jupyter
-```
-
-</details>
-
----
-
-
-
-## ☁️ IBM Cloud Deployment Guide
-
-1. **Watson Studio** — hosts the project and notebook
-2. **Watson Machine Learning (Lite)** — stores and deploys the trained model as an online REST scoring endpoint
-3. **Cloud Object Storage (Lite)** — backs the Watson Studio project's asset storage
 
 
 
