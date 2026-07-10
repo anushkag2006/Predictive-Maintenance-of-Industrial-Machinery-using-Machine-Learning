@@ -156,32 +156,12 @@ jupyter
 
 ## ☁️ IBM Cloud Deployment Guide
 
-<details>
-<summary><b>Click to expand step-by-step deployment instructions</b></summary>
-
-<br>
-
 1. **Watson Studio** — hosts the project and notebook
 2. **Watson Machine Learning (Lite)** — stores and deploys the trained model as an online REST scoring endpoint
 3. **Cloud Object Storage (Lite)** — backs the Watson Studio project's asset storage
 
-```python
-
-```
-
-</details>
-
----
 
 
----
-
----
-
-## 👤 Author
-
-**Anushka**
-Mechanical Engineering — Machine Learning Project (Problem Statement No. 39)
 
 
 
