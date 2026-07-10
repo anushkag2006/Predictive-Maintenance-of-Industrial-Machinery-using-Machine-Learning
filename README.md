@@ -15,25 +15,6 @@
 
 ---
 
-## 📑 Table of Contents
-
-- [Overview](#-overview)
-- [Problem Statement](#-problem-statement)
-- [Dataset](#-dataset)
-- [Project Workflow](#-project-workflow)
-- [Tech Stack](#-tech-stack)
-- [Results](#-results)
-- [Live Deployment](#-live-deployment)
-- [Project Structure](#-project-structure)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [IBM Cloud Deployment Guide](#-ibm-cloud-deployment-guide)
-- [Societal & Commercial Impact](#-societal--commercial-impact)
-- [Limitations & Future Work](#-limitations--future-work)
-- [Author](#-author)
-
----
-
 ## 🔍 Overview
 
 Unplanned failures in industrial machinery lead to costly downtime and reactive maintenance. This project builds a **multi-class classification model** that identifies *which type* of failure is likely — Tool Wear, Heat Dissipation, Power Failure, Overstrain, or Random Failure — from live operational sensor readings, so maintenance teams can intervene before a breakdown happens.
@@ -87,18 +68,6 @@ Develop a predictive maintenance model for a fleet of industrial machines to ant
 ---
 
 ## ⚙️ Project Workflow
-
-```mermaid
-flowchart LR
-    A[Raw Sensor Data] --> B[EDA & Preprocessing]
-    B --> C[Feature Engineering<br/>Power, Temp Diff]
-    C --> D[SMOTE<br/>Class Balancing]
-    D --> E[Random Forest<br/>Training]
-    E --> F[GridSearchCV<br/>Tuning]
-    F --> G[Evaluation]
-    G --> H[IBM Watson ML<br/>Deployment]
-```
-
 1. **Exploratory Data Analysis** — distribution plots, correlation heatmap, boxplots across failure types
 2. **Feature Engineering** — encoded `Type`; derived `Power [W] = Torque × Rotational Speed`; derived `Temp Diff [K]`
 3. **Preprocessing** — stratified train/test split, `StandardScaler`
