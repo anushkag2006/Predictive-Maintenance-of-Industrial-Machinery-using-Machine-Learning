@@ -108,9 +108,6 @@ Develop a predictive maintenance model for a fleet of industrial machines to ant
 
 </div>
 
-The model performs strongly on majority classes (No Failure, Power Failure, Heat Dissipation) and reasonably on Overstrain Failure. Performance on **Random Failures** and **Tool Wear Failure** is limited by very low sample counts in the raw dataset — see [Limitations](#-limitations--future-work).
-
-**Top predictive features:** Torque, Rotational Speed, and the engineered Power feature.
 
 
 
